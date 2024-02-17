@@ -3,24 +3,20 @@
 // You can return the answer in any order.
 
 const twoSum = function (nums, target) {
-  let answer;
+  const obj = {};
 
   for (let i = 0; i < nums.length; i++) {
-    const x = nums[i];
-    for (let j = i + 1; j < nums.length; j++) {
-      const v = nums[j];
-      const sum = x + v;
+    const num = target - nums[i];
 
-      if (sum === target) {
-        answer = [i, j];
-        break;
-      }
+    if (obj.hasOwnProperty(num)) {
+      return [obj[num], i];
     }
+
+    obj[nums[i]] = i;
   }
-  return answer;
 };
 
-const nums = [3, 3];
+const nums = [3, 2, 3];
 const target = 6;
 const a = twoSum(nums, target);
 console.log(a);
