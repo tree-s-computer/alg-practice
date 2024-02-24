@@ -13,3 +13,5 @@ const containsDuplicate = function (nums) {
 
   return newArr.some((x) => x >= 2);
 };
+
+// https://leetcode.com/problems/contains-duplicate/description/
