@@ -2,7 +2,6 @@
 
 const topKFrequent = (nums, k) => {
   const obj = {};
-  const answer = [];
 
   for (let i = 0; i < nums.length; i++) {
     const v = nums[i];
@@ -13,14 +12,8 @@ const topKFrequent = (nums, k) => {
     }
   }
 
-  const keyValueArray = Object.entries(obj);
-  const sortedArray = keyValueArray.sort((a, b) => b[1] - a[1]);
-
-  for (let i = 0; i < k; i++) {
-    const x = Number(sortedArray[i][0]);
-    answer.push(x);
-  }
-
+  const sortedArray = Object.entries(obj).sort((a, b) => b[1] - a[1]);
+  const answer = sortedArray.slice(0, k).map(([num]) => Number(num));
   return answer;
 };
 
