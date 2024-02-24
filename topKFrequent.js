@@ -13,7 +13,12 @@ const topKFrequent = (nums, k) => {
   }
 
   const sortedArray = Object.entries(obj).sort((a, b) => b[1] - a[1]);
-  const answer = sortedArray.slice(0, k).map(([num]) => Number(num));
+
+  //[ [ '1', 3 ], [ '2', 2 ], [ '3', 3 ] ]
+  // 0:숫자  1:몇개가 존재하는지
+  // [1] 번째 인덱스 () 순서대로 정렬.
+
+  const answer = sortedArray.slice(0, k).map(([num, _]) => Number(num));
   return answer;
 };
 
