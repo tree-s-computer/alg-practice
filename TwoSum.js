@@ -20,3 +20,5 @@ const nums = [3, 2, 3];
 const target = 6;
 const a = twoSum(nums, target);
 console.log(a);
+
+// https://leetcode.com/problems/two-sum/description/
