@@ -14,24 +14,35 @@
  * @return {void}
  */
 
-class MinStack {
-  constructor() {
-    this.array = [];
-  }
+var MinStack = function () {
+  this.array = [];
+};
 
-  push(val) {
-    this.array = [...this.array, val];
-  }
+/**
+ * @param {number} val
+ * @return {void}
+ */
+MinStack.prototype.push = function (val) {
+  this.array = [...this.array, val];
+};
 
-  pop() {
-    this.array.splice(0, this.array.length - 1);
-  }
+/**
+ * @return {void}
+ */
+MinStack.prototype.pop = function () {
+  this.array = this.array.slice(0, this.array.length - 1);
+};
 
-  top() {
-    return this.array[this.array.length - 1];
-  }
+/**
+ * @return {number}
+ */
+MinStack.prototype.top = function () {
+  return this.array[this.array.length - 1];
+};
 
-  getMin() {
-    Math.min(...this.array);
-  }
-}
+/**
+ * @return {number}
+ */
+MinStack.prototype.getMin = function () {
+  return Math.min(...this.array);
+};
