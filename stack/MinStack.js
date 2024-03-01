@@ -25,12 +25,14 @@ var MinStack = function () {
  */
 
 MinStack.prototype.push = function (val) {
-  this.array = [...this.array, val];
+  this.array.push(val);
 
   if (
-    this.minStack.length === 0 ||
-    val <= this.minStack[this.minStack.length - 1]
+    this.minStack[this.minStack.length - 1] >
+    this.array[this.minStack.length - 1]
   ) {
+    this.minStack.push(this.minStack[this.minStack.length - 1]);
+  } else {
     this.minStack.push(val);
   }
 };
@@ -40,6 +42,7 @@ MinStack.prototype.push = function (val) {
  */
 MinStack.prototype.pop = function () {
   this.array = this.array.slice(0, this.array.length - 1);
+  this.minStack = this.array.slice(0, this.minStack.length - 1);
 };
 
 /**
