@@ -42,7 +42,7 @@ MinStack.prototype.push = function (val) {
  */
 MinStack.prototype.pop = function () {
   this.array = this.array.slice(0, this.array.length - 1);
-  this.minStack = this.array.slice(0, this.minStack.length - 1);
+  this.minStack = this.minStack.slice(0, this.minStack.length - 1);
 };
 
 /**
