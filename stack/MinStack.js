@@ -16,14 +16,23 @@
 
 var MinStack = function () {
   this.array = [];
+  this.minStack = [];
 };
 
 /**
  * @param {number} val
  * @return {void}
  */
+
 MinStack.prototype.push = function (val) {
   this.array = [...this.array, val];
+
+  if (
+    this.minStack.length === 0 ||
+    val <= this.minStack[this.minStack.length - 1]
+  ) {
+    this.minStack.push(val);
+  }
 };
 
 /**
@@ -44,5 +53,5 @@ MinStack.prototype.top = function () {
  * @return {number}
  */
 MinStack.prototype.getMin = function () {
-  return Math.min(...this.array);
+  return this.minStack[this.minStack.length - 1];
 };
