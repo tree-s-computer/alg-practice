@@ -8,7 +8,7 @@ const isValid = function (s) {
   for (let i = 0; i < s.length; i++) {
     const x = s[i];
     const v = stack[stack.length - 1];
-    const word = a + v;
+    const word = x + v;
 
     if (word == a || word == b || word == c) {
       stack.pop();
