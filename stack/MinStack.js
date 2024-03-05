@@ -15,7 +15,7 @@
  */
 
 var MinStack = function () {
-  this.array = [];
+  this.stack = [];
   this.minStack = [];
 };
 
@@ -25,14 +25,17 @@ var MinStack = function () {
  */
 
 MinStack.prototype.push = function (val) {
-  this.array.push(val);
+  const minStackTop = this.minStack.length - 1;
+  const stackTop = this.stack.length - 1;
 
-  if (
-    this.minStack[this.minStack.length - 1] >
-    this.array[this.minStack.length - 1]
-  ) {
-    this.minStack.push(this.minStack[this.minStack.length - 1]);
+  this.stack.push(val); // By default, the stack has a push
+
+  // Compare the numbers in the Top of stack and minStack.
+  if (this.minStack[minStackTop] > this.stack[stackTop]) {
+    // If the number in the minStack is smaller, then push
+    this.minStack.push(this.minStack[minStackTop]);
   } else {
+    // If the number in the minStack is larger, push the value currently coming into the minStak.
     this.minStack.push(val);
   }
 };
@@ -41,7 +44,7 @@ MinStack.prototype.push = function (val) {
  * @return {void}
  */
 MinStack.prototype.pop = function () {
-  this.array = this.array.slice(0, this.array.length - 1);
+  this.stack = this.stack.slice(0, this.stack.length - 1);
   this.minStack = this.minStack.slice(0, this.minStack.length - 1);
 };
 
@@ -49,7 +52,7 @@ MinStack.prototype.pop = function () {
  * @return {number}
  */
 MinStack.prototype.top = function () {
-  return this.array[this.array.length - 1];
+  return this.stack[this.stack.length - 1];
 };
 
 /**
