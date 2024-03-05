@@ -12,4 +12,4 @@ https://github.com/tree-s-computer/alg-practice/pull/5
 
 https://github.com/tree-s-computer/alg-practice/pull/7
 
-### 3-2 : Generate Parentheses & Daily Temperatures
+### 3-2 : Generate Parentheses & Daily Temperatures & Valid Prentheses
