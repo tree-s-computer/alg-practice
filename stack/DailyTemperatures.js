@@ -1,42 +1,29 @@
-// Given an array of integers temperatures represents the daily temperatures,
-// return an array answer such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature.
-// If there is no future day for which this is possible, keep answer[i] == 0 instead.
-
 const temperatures = [73, 74, 75, 71, 69, 72, 76, 73];
 
 const dailyTemperatures = function (temperatures) {
-  const minStack = [];
+  const n = temperatures.length;
+  const result = new Array(n).fill(0);
+  const stack = [];
 
-  temperatures.forEach((tem, idx) => {
-    let count = 0;
-    console.log("tem" + tem);
-    for (let i = idx + 1; i < temperatures.length; i++) {
-      const afeterNum = temperatures[i];
+  for (let i = 0; i < n; i++) {
+    const currentTemperature = temperatures[i];
 
-      if (idx === temperatures.length - 1) {
-        count = 0;
-        break;
-      }
+    // 스택이 비어있지 않고, 현재 온도가 스택의 가장 위의 온도보다 높을 때
+    while (
+      stack.length > 0 &&
+      currentTemperature > temperatures[stack[stack.length - 1]]
+    ) {
+      const prevDay = stack.pop(); // 스택에서 이전 날짜를 꺼내옴
+      const a = i - prevDay;
 
-      if (tem < afeterNum) {
-        count += 1;
-        break;
-      }
-
-      if (tem > afeterNum && idx + 1 === temperatures.length - 1) {
-        count = 0;
-        break;
-      }
-      count += 1;
+      result[prevDay] = i - prevDay; // 현재 날짜와 이전 날짜 간의 차이를 결과에 저장
     }
 
-    minStack.push(count);
-  });
+    stack.push(i); // 현재 날짜를 스택에 추가
+  }
 
-  return minStack;
+  return result;
 };
 
 const x = dailyTemperatures(temperatures);
 console.log(x);
-
-// https://leetcode.com/problems/daily-temperatures/description/
