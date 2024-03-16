@@ -27,3 +27,5 @@ const dailyTemperatures = function (temperatures) {
 
 const x = dailyTemperatures(temperatures);
 console.log(x);
+
+// https://leetcode.com/problems/daily-temperatures/description/
