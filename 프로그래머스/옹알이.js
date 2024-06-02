@@ -8,11 +8,12 @@ function solution(word) {
     let found = false;
     for (let sound of validSounds) {
       if (word.startsWith(sound, i)) {
+        //i 부터 다시 시작
         if (sound === lastSound) {
           return false; // 같은 발음이 연속되면 false
         }
         lastSound = sound;
-        i += sound.length;
+        i += sound.length; //반복문 돌릴 때 다음으로 넘어가고 싶으면 sound 문자수만큼 i ++
         found = true;
         break;
       }
